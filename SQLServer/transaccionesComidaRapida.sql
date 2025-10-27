@@ -11,10 +11,10 @@ BEGIN TRY
     DECLARE @idProducto INT = SCOPE_IDENTITY();
 
     INSERT INTO LogEventos (fechaLog, usuario, tipoEvento, tablaAfectada, registroAfectado, descripcion)
-    VALUES (GETDATE(), 'admin', 'INSERT', 'Productos', @idProducto, 'Se insertó un nuevo producto');
+    VALUES (GETDATE(), 'admin', 'INSERT', 'Productos', @idProducto, 'Se insertÃ³ un nuevo producto');
 
     COMMIT;
-    PRINT 'Transacción confirmada.';
+    PRINT 'TransacciÃ³n confirmada.';
 END TRY
 BEGIN CATCH
     ROLLBACK;
@@ -22,26 +22,4 @@ BEGIN CATCH
 END CATCH;
 
 SELECT * FROM Productos;
-SELECT * FROM LogEventos;
-
-
--- Transacción para actualizar el stock
-BEGIN TRANSACTION;
-
-BEGIN TRY
-    UPDATE Productos
-    SET stock = stock - 3
-    WHERE idProducto = 1;
-
-    INSERT INTO LogEventos (fechaLog, usuario, tipoEvento, tablaAfectada, registroAfectado, descripcion)
-    VALUES (GETDATE(), 'Administrador', 'UPDATE', 'Productos', 1, 'Se descontó stock por venta');
-
-    COMMIT;
-    PRINT 'Stock actualizado correctamente.';
-END TRY
-BEGIN CATCH
-    ROLLBACK;
-    PRINT 'Error: ' + ERROR_MESSAGE();
-END CATCH;
-
 SELECT * FROM LogEventos;
