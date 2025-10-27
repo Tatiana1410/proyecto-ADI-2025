@@ -1,0 +1,5 @@
+# Comandos ejecutados para habilitar replicación
+mongod --replSet "rs0" --port 27017 --dbpath C:\mongo-replica\r1 --bind_ip 127.0.0.1
+mongosh --port 27017
+rs.initiate()
+rs.status()
