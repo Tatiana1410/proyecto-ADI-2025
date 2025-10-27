@@ -4,25 +4,26 @@ GO
 --probar trigger para registrar eventos
 --INSERT
 INSERT INTO Pedidos (codigoPedido, fechaPedido, horaPedido, totalPedido, estado, observaciones, idCliente, idEmpleado, idMetodoPago)
-VALUES ();
+VALUES ('P-20251027-002','2025-10-27','10:30:00',6.40,'Entregado','DESCUENTO BEBIDA',27,28,3);
 
 SELECT * FROM LogEventos WHERE tablaAfectada = 'Pedidos';
 
 --UPDATE
 UPDATE Pedidos
 SET estado = 'Entregado'
-WHERE codigoPedido = '';
+WHERE codigoPedido = 'P-20251027-002';
 
 SELECT * FROM LogEventos WHERE tipoEvento = 'UPDATE';
 
 --DELETE
-DELETE FROM Pedidos WHERE codigoPedido = '';
+DELETE FROM Pedidos WHERE codigoPedido = 'P-20251027-002';
 SELECT * FROM LogEventos WHERE tipoEvento = 'DELETE';
 
 
 --probar trigger de actualizar stock al agregar un pedido
 INSERT INTO DetallesPedidos (cantidad, precioUnitario, descuento, idPedido, idProducto)
 VALUES (2, 5.00, 0, 1, 1);
+
 SELECT idProducto, stock FROM Productos WHERE idProducto = 1;
 SELECT * FROM LogEventos WHERE tablaAfectada = 'Productos';
 
@@ -31,7 +32,7 @@ SELECT * FROM LogEventos WHERE tablaAfectada = 'Productos';
 EXEC sp_actualizarstock @idProducto = 1, @nuevaCantidad = 50;
 SELECT * FROM Productos WHERE idProducto = 1;
 SELECT * FROM LogEventos WHERE tablaAfectada = 'Productos';
-
+GO
 
 --procedimiento para registrar pedido
 CREATE TABLE #detalleTmp (
@@ -44,14 +45,14 @@ CREATE TABLE #detalleTmp (
 INSERT INTO #detalleTmp VALUES (1, 2, 5.50, 0);
 
 EXEC sp_registrarPedido
-    @codigoPedido = 'PED-PRUEBA-001',
+    @codigoPedido = 'P-20251027-001',
     @idCliente = 1,
     @idEmpleado = 1,
     @idMetodoPago = 1,
     @totalPedido = 11.00,
     @estado = 'Pendiente',
     @observaciones = 'Pedido de prueba funcional';
-
+GO
 
 
 --probar procemiento para cambiar el estado del pedido
