@@ -49,7 +49,7 @@ PROYECTO-ADI-2025/
 └── README.md
 
 
-2. Orden de Ejecución del Proyecto
+3. Orden de Ejecución del Proyecto
 Este es el flujo recomendado para ejecutar todo el sistema de forma correcta.
 
 2.1 Preparación del entorno
