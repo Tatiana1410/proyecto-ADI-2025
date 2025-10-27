@@ -1,6 +1,6 @@
-# proyecto-ADI-2025
+﻿# proyecto-ADI-2025
 Archivos de la base de datos SQL Server y MongoDB
-2. Estructura del proyecto
+1. Estructura del proyecto
 PROYECTO-ADI-2025/
 │
 ├── Documentación/
