@@ -112,6 +112,18 @@ consultas.txt
 4. Probar transacciones
 OperacionesTransaccionalesNoSQL.txt
 
+
+5. Replica Set
+5.1 Inicio del nodo principal:
+mongod --replSet "rs0" --port 27017 --dbpath C:\mongo-replica\r1 --bind_ip 127.0.0.1
+
+5.2 Inicialización del Replica Set:
+mongosh --port 27017
+rs.initiate()
+
+5.3 Una vez iniciado el Replica Set, se verificó su estado con: rs.status()
+
+
 Autores
 1.	Helen Margarita Martínez Clímaco
 2.	Cristina Nohemy Fuentes Santiago
