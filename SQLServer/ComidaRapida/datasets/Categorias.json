@@ -1,0 +1,7 @@
+[
+  { "nombreCategoria": "Hamburguesas", "descripcionCategoria": "Productos a base de carne", "estadoCategoria": "Activo" },
+  { "nombreCategoria": "Bebidas", "descripcionCategoria": "Refrescos y agua", "estadoCategoria": "Activo" },
+  { "nombreCategoria": "Postres", "descripcionCategoria": "Helados y pasteles", "estadoCategoria": "Activo" },
+  { "nombreCategoria": "Pizzas", "descripcionCategoria": "Productos horneados con base de masa y toppings variados","estadoCategoria": "Activo" },
+  { "nombreCategoria": "Tacos", "descripcionCategoria": "Preparaciones con tortilla rellena de carne, vegetales o queso", "estadoCategoria": "Activo" }
+]

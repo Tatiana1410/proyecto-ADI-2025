@@ -1,0 +1,4 @@
+idMetodoPago,nombreMetodo,descripcionMetodo
+1,Efectivo,Pago en efectivo
+2,Tarjeta,Crédito o débito
+3,Transferencia,Transferencia bancaria

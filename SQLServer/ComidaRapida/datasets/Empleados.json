@@ -1,0 +1,13 @@
+[
+  {"nombreEmpleado":"Luis","apellidoEmpleado":"Martínez","telefono":"70001111","fechaIngreso":"2025-09-15","cargo":"Administrador","estado":"Activo","idSucursal":1},
+  {"nombreEmpleado":"Sofía","apellidoEmpleado":"Ramírez","telefono":"70002222","fechaIngreso":"2025-09-20","cargo":"Cajero","estado":"Activo","idSucursal":1},
+  {"nombreEmpleado":"Erick","apellidoEmpleado":"Castro","telefono":"70003333","fechaIngreso":"2025-09-25","cargo":"Cocinero","estado":"Activo","idSucursal":2},
+  {"nombreEmpleado":"Ana","apellidoEmpleado":"Gómez","telefono":"70004444","fechaIngreso":"2025-09-26","cargo":"Cajero","estado":"Activo","idSucursal":1},
+  {"nombreEmpleado":"Carlos","apellidoEmpleado":"López","telefono":"70005555","fechaIngreso":"2025-09-26","cargo":"Cocinero","estado":"Activo","idSucursal":2},
+  {"nombreEmpleado":"María","apellidoEmpleado":"Fernández","telefono":"70006666","fechaIngreso":"2025-09-27","cargo":"Mesero","estado":"Activo","idSucursal":3},
+  {"nombreEmpleado":"José","apellidoEmpleado":"Ramírez","telefono":"70007777","fechaIngreso":"2025-09-27","cargo":"Cocinero","estado":"Activo","idSucursal":4},
+  {"nombreEmpleado":"Lucía","apellidoEmpleado":"Torres","telefono":"70008888","fechaIngreso":"2025-09-28","cargo":"Cajero","estado":"Activo","idSucursal":5},
+  {"nombreEmpleado":"Pedro","apellidoEmpleado":"Martínez","telefono":"70009999","fechaIngreso":"2025-09-28","cargo":"Administrador","estado":"Activo","idSucursal":1},
+  {"nombreEmpleado":"Valeria","apellidoEmpleado":"Cruz","telefono":"70010000","fechaIngreso":"2025-09-29","cargo":"Mesero","estado":"Activo","idSucursal":2},
+  {"nombreEmpleado":"Jorge","apellidoEmpleado":"Molina","telefono":"70011111","fechaIngreso":"2025-09-29","cargo":"Cocinero","estado":"Activo","idSucursal":3}
+]

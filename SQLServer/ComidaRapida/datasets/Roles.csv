@@ -1,0 +1,4 @@
+IdRol,nombreRol,descripcion
+1,Administrador,Acceso total al sistema
+2,Cajero,Registra pedidos y cobros
+3,Cocinero,Visualiza y actualiza estado de pedidos

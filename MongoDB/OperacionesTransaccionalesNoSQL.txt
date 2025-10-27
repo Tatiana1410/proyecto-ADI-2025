@@ -1,0 +1,102 @@
+use ComidaRapida
+print("Iniciando ejecución del script de operaciones transaccionales...");
+
+// Colección para registrar operaciones y compensaciones
+db.createCollection("operacionesTransaccionales", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["accion", "coleccion", "estado", "fecha"],
+      properties: {
+        accion: { bsonType: "string" },
+        coleccion: { bsonType: "string" },
+        estado: { bsonType: "string" },
+        documento: { bsonType: "object" },
+        fecha: { bsonType: "date" }
+      }
+    }
+  }
+});
+
+
+// Bloque de operación transaccional equivalente
+
+
+// Iniciar registro de operación
+let registroOperacion = {
+  accion: "crearTicketConComentario",
+  coleccion: "tickets/comentarios",
+  estado: "iniciada",
+  fecha: new Date()
+};
+let operacion = db.operacionesTransaccionales.insertOne(registroOperacion);
+
+try {
+  // --- Operación 1: crear ticket ---
+  let nuevoTicket = {
+    idClienteSQL: 120,
+    idPedidoSQL: 250,
+    asunto: "Demora en la entrega",
+    descripcion: "El pedido tardó más de 1 hora.",
+    estado: "Abierto",
+    fechaCreacion: new Date()
+  };
+
+  let ticketInsert = db.tickets.insertOne(nuevoTicket);
+
+  // --- Operación 2: crear comentario asociado ---
+  let nuevoComentario = {
+    idPedidoSQL: 250,
+    idClienteSQL: 120,
+    comentario: "La comida llegó fría.",
+    calificacion: 2,
+    fecha: new Date()
+  };
+
+  let comentarioInsert = db.comentarios.insertOne(nuevoComentario);
+
+  // Si ambas operaciones fueron exitosas
+  db.operacionesTransaccionales.updateOne(
+    { _id: operacion.insertedId },
+    {
+      $set: {
+        estado: "completada",
+        fecha: new Date(),
+        documento: {
+          ticket: ticketInsert.insertedId,
+          comentario: comentarioInsert.insertedId
+        }
+      }
+    }
+  );
+
+  print("Operación transaccional completada correctamente.");
+
+} catch (error) {
+  print("Error detectado en operación transaccional:", error);
+
+  // --- Operación 3 compensatoria real ---
+  // Si algo falla, se eliminan los documentos creados
+  if (typeof ticketInsert !== "undefined") {
+    db.tickets.deleteOne({ _id: ticketInsert.insertedId });
+  }
+  if (typeof comentarioInsert !== "undefined") {
+    db.comentarios.deleteOne({ _id: comentarioInsert.insertedId });
+  }
+
+  // Registrar la compensación
+  db.operacionesTransaccionales.updateOne(
+    { _id: operacion.insertedId },
+    {
+      $set: {
+        estado: "revertida",
+        fecha: new Date(),
+        documento: { error: error.message }
+      }
+    }
+  );
+
+  print("Cambios revertidos por operación compensatoria.");
+}
+print("Script ejecutado correctamente: Operaciones transaccionales equivalentes/compensatorias completadas.");
+

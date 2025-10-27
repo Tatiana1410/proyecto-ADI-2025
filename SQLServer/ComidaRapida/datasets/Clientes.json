@@ -1,0 +1,13 @@
+[
+	{"nombreCliente":"Juan Pérez","telefono":"77778888","emailCliente":"juan.perez@gmail.com","fechaRegistro":"2025-10-01"},
+	{"nombreCliente":"Ana López","telefono":"77779999","emailCliente":"ana.lopez@gmail.com","fechaRegistro":"2025-10-01"},
+	{"nombreCliente":"Carlos Díaz","telefono":"76667777","emailCliente":"carlos.diaz@gmail.com","fechaRegistro":"2025-10-02"},
+	{"nombreCliente":"María Gómez","telefono":"75556666","emailCliente":"maria.gomez@gmail.com","fechaRegistro":"2025-10-03"},
+	{"nombreCliente":"Luis Torres","telefono":"74445555","emailCliente":"luis.torres@gmail.com","fechaRegistro":"2025-10-01"},
+	{"nombreCliente":"Sofía Ramírez","telefono":"73334444","emailCliente":"sofia.ramirez@gmail.com","fechaRegistro":"2025-10-01"},
+	{"nombreCliente":"Pedro Castillo","telefono":"72223333","emailCliente":"pedro.castillo@gmail.com","fechaRegistro":"2025-10-01"},
+	{"nombreCliente":"Laura Méndez","telefono":"71112222","emailCliente":"laura.mendez@gmail.com","fechaRegistro":"2025-10-01"},
+	{"nombreCliente":"Diego Herrera","telefono":"70001111","emailCliente":"diego.herrera@gmail.com","fechaRegistro":"2025-10-01"},
+	{"nombreCliente":"Valentina Cruz","telefono":"79998888","emailCliente":"valentina.cruz@gmail.com","fechaRegistro":"2025-10-02"},
+	{"nombreCliente":"Jorge Molina","telefono":"78887777","emailCliente":"jorge.molina@gmail.com","fechaRegistro":"2025-10-02"}
+]

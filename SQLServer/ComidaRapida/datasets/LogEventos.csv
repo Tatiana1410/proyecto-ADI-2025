@@ -1,0 +1,3 @@
+fechaLog,usuario,tipoEvento,tablaAfectada,registroAfectado,descripcion
+2025-10-25 12:16:00,sramirez,INSERT,Pedidos,1,Pedido registrado
+2025-10-25 12:16:05,ecastro,UPDATE,Pedidos,1,Pedido marcado como Entregado

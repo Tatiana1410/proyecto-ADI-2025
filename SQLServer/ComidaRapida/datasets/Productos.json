@@ -1,0 +1,13 @@
+[
+  {"nombreProducto":"Hamburguesa BBQ","descripcion":"Carne, queso, cebolla caramelizada y salsa BBQ","precio":4.25,"stock":180,"estado":"Activo","idCategoria":1},
+  {"nombreProducto":"Hamburguesa Vegetariana","descripcion":"Hamburguesa de garbanzo con vegetales","precio":3.80,"stock":100,"estado":"Activo","idCategoria":1},
+  {"nombreProducto":"Hamburguesa Picante","descripcion":"Carne, jalapeños, queso cheddar y salsa picante","precio":4.00,"stock":120,"estado":"Activo","idCategoria":1},
+  {"nombreProducto":"Refresco 1L","descripcion":"Bebida gaseosa 1 litro","precio":1.50,"stock":300,"estado":"Activo","idCategoria":2},
+  {"nombreProducto":"Jugo Natural","descripcion":"Jugo de frutas sin azúcar añadida","precio":1.75,"stock":250,"estado":"Activo","idCategoria":2},
+  {"nombreProducto":"Café Helado","descripcion":"Café frío con leche y hielo","precio":2.00,"stock":200,"estado":"Activo","idCategoria":2},
+  {"nombreProducto":"Brownie","descripcion":"Brownie de chocolate con nueces","precio":2.50,"stock":90,"estado":"Activo","idCategoria":3},
+  {"nombreProducto":"Sundae Chocolate","descripcion":"Helado de vainilla con sirope de chocolate","precio":2.25,"stock":110,"estado":"Activo","idCategoria":3},
+  {"nombreProducto":"Galleta Chispas","descripcion":"Galleta grande con chispas de chocolate","precio":1.50,"stock":150,"estado":"Activo","idCategoria":3},
+  {"nombreProducto":"Pizza Personal","descripcion":"Pizza individual de pepperoni","precio":3.75,"stock":80,"estado":"Activo","idCategoria":4},
+  {"nombreProducto":"Pizza Vegetariana","descripcion":"Pizza con vegetales y queso mozzarella","precio":3.50,"stock":70,"estado":"Activo","idCategoria":4}
+]

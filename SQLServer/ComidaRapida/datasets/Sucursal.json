@@ -1,0 +1,7 @@
+[
+  { "nombreSucursal": "Sucursal Centro",  "direccion": "Av. Principal #123", "telefono": "22223333", "estado": "Activo" },
+  { "nombreSucursal": "Sucursal MetroCentro", "direccion": "Blvd. Comercial #456", "telefono": "22224444", "estado": "Activo" },
+  { "nombreSucursal": "Sucursal Pasatiempo", "direccion": "Carretera Panamericana, Lourdes", "telefono": "22325444", "estado": "Activo" },
+  { "nombreSucursal": "Sucursal Multiplaza", "direccion": "Carretera Panamericana, Antiguo Cuscatlán", "telefono": "25079800", "estado": "Activo" },
+  { "nombreSucursal": "Sucursal El Platillo", "direccion": "Blv. Merliot y Calle el Pedregal #1", "telefono": "25238490", "estado": "Activo" }
+]

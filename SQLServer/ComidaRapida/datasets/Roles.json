@@ -1,0 +1,5 @@
+[
+  { "nombreRol": "Administrador", "descripcion": "Acceso total al sistema" },
+  { "nombreRol": "Cajero", "descripcion": "Registra pedidos y cobros" },
+  { "nombreRol": "Cocinero", "descripcion": "Visualiza y actualiza estado de pedidos" }
+]

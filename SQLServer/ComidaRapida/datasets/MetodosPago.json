@@ -1,0 +1,5 @@
+[
+  { "nombreMetodo": "Efectivo", "descripcionMetodo": "Pago en efectivo" },
+  { "nombreMetodo": "Tarjeta", "descripcionMetodo": "Crédito o débito"  },
+  { "nombreMetodo": "Transferencia", "descripcionMetodo": "Transferencia bancaria" }
+]

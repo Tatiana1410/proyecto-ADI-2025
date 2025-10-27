@@ -1,0 +1,6 @@
+idSucursal,nombreSucursal,direccion,telefono,estado
+"1,Sucursal Centro,""Av. Principal #123"",22223333,Activo"
+"2,Sucursal MetroCentro,""Blvd. Comercial #456"",22224444,Activo"
+"3,Sucursal Pasatiempo,""Carretera Panamericana Lourdes"",22325444,Activo"
+"4,Sucursal Multiplaza,""Carretera Panamericana  Antiguo Cuscatlán"",25079800,Activo"
+"5,Sucursal El Platillo,""Blv. Merliot y Calle el Pedregal #1"",25238490,Activo"

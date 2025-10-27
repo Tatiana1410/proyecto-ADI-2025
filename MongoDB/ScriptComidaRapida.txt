@@ -1,0 +1,162 @@
+use ComidaRapida;
+//Se recomienda copiar y pegar por partes
+
+//Tipo de dato aclaración:
+//BSON(Binary JSON) el formato de datos que utiliza MongoDB a diferencia de JSON que es un formato de texto
+
+//=================================CREANDO COLECCION COMENTARIOS=================================
+//En comentarios todos los campos son requeridos
+db.createCollection("comentarios", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: [ "idPedidoSQL", "idClienteSQL", "comentario", "calificacion", "fecha" ],
+            properties: {
+                idPedidoSQL: { bsonType: "int", description: "Debe ser un entero y es requerido." },
+                idClienteSQL: { bsonType: "int", description: "Debe ser un entero y es requerido." },
+                comentario: { bsonType: "string", description: "Debe ser una cadena de texto y es requerido." },
+                calificacion: { bsonType: "int", description: "Debe ser un entero y es requerido." },
+                fecha: { bsonType: "date", description: "Debe ser un tipo Date de BSON y es requerido." }
+            }
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict"
+});
+
+//=============================================CREANDO COLECCION TICKETS=============================================
+db.createCollection("tickets", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: [ "idClienteSQL", "idPedidoSQL", "asunto", "descripcion", "estado", "fechaCreacion" ],
+            properties: {
+                idClienteSQL: {
+                    bsonType: "int",
+                    description: "Referencia al cliente SQL, Requerido."
+                },
+                idPedidoSQL: {
+                    bsonType: "int",
+                    description: "Referencia al pedido SQL, Requerido."
+                },
+                asunto: {
+                    bsonType: "string",
+                    description: "Titulo del problema, Requerido."
+                },
+                descripcion: {
+                    bsonType: "string",
+                    description: "Detalle del ticket, Requerido."
+                },
+                estado: {
+                    bsonType: "string",
+                    enum: ["Abierto", "En Progreso", "Cerrado"],
+                    description: "Estado actual del ticket, Requerido."
+                },
+                fechaCreacion: {
+                    bsonType: "date",
+                    description: "Fecha y hora de apertura del ticket, Requerido."
+                },
+                fechaCierre: {
+                    bsonType: "date",
+                    description: "Fecha y hora de cierre."
+                },
+                idempleadoAsignadoSQL: {
+                    bsonType: "int",
+                    description: "Referencia al empleado SQL asignado."
+                }
+            }
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict"
+});
+
+//============================================CREANDO COLECCION ENCUESTA============================================
+db.createCollection("encuestas", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: [ "idClienteSQL", "fecha", "preguntas", "recomendaria" ],
+            properties: {
+                idClienteSQL: {
+                    bsonType: "int",
+                    description: "Referencia al cliente en el sistema SQL, Requerido."
+                },
+                fecha: {
+                    bsonType: "date",
+                    description: "Fecha de realización de la encuesta, Requerido."
+                },
+                preguntas: {
+                    bsonType: "array",
+                    description: "Lista de preguntas y respuestas que funciona Clave-Valor, Requerido.",
+                    items: {
+                        bsonType: "object",
+                        required: ["idPregunta", "respuesta"],
+                        properties: {
+                            idPregunta: { bsonType: "int" },
+                            respuesta: { bsonType: "string" }
+                        }
+                    }
+                },
+                recomendaria: {
+                    bsonType: "bool",
+                    description: "Booleano que indica si el cliente recomendaría el servicio el cual seria true(si) y false(no), Requerido."
+                },
+                comentarioAdicional: {
+                    bsonType: ["string", "null"],
+                    description: "Comentario adicional de la encuesta, Permite datos nulos."
+                }
+            }
+        }
+    },
+    validationAction: "error",
+    validationLevel: "strict"
+});
+
+//===================================================================================================
+//INSERCION DE UN OBJETO EN LA COLECCIÓN
+//--AGREGAR COMENTARIO
+//Calificacion de ser de 1 a 5
+//Para fecha debe ser de la siguiente forma: 2025-10-24T14:00:00Z
+//En la fecha T indica que inicia el tiempo, en la siguiente forma: hh:mm:ssZ
+//Z indica que el tiempo es UTC (Universal Time Coordinated)
+db.comentarios.insertOne({
+    idPedidoSQL: 9876,
+    idClienteSQL: 101,
+    comentario: "La hamburguesa llegó fría, pero el repartidor fue muy rápido.",
+    calificacion: 3,
+    fecha: new Date("2025-10-24T14:00:00Z")
+});
+
+//==============================AGREGAR ENCUESTA==========================================
+//Para "recomendaria" debe ser obligatoriamente valor booleano
+//Para preguntas, su funcionamiento es clave-valor
+db.encuestas.insertOne({
+    idClienteSQL: 205,
+    fecha: new Date("2025-10-24T14:30:00Z"),
+    preguntas: [
+        { 
+            idPregunta: 1, 
+            respuesta: "Sí, la calidad de los ingredientes fue excelente."
+        },
+        { 
+            idPregunta: 2, 
+            respuesta: "El tiempo de espera fue aceptable (25 minutos)." 
+        }
+    ],
+    recomendaria: true,
+    comentarioAdicional: "Por favor, añadan más opciones vegetarianas al menú."
+});
+
+//=========================================AGREGAR TICKET=======================================================
+//Para "estado" debe ser obligatoriamente uno de los valores Enum: "Abierto", "En Progreso", "Cerrado"
+//Para el siguiente ejemplo, el ticket está "Abierto" y debe considerarse lo siguente:.
+//Para "fechaCierre" y "idempleadoAsignadoSQL" se omiten, ya que no son campos 'required' y el ticket está "Abierto".
+db.tickets.insertOne({
+    idClienteSQL: 10,
+    idPedidoSQL: 15,
+    asunto: "Error en el cobro del cupón de descuento.",
+    descripcion: "El cupón de descuento no se aplicó en el pedido, por favor, ajusten la factura.",
+    estado: "Abierto",
+    fechaCreacion: new Date("2025-10-24T15:15:00Z")
+});

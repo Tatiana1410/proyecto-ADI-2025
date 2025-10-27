@@ -1,0 +1,13 @@
+[
+  {"Cantidad":2,"precioUnitario":3.50,"descuento":0.00,"idPedido":1,"idProducto":1},
+  {"Cantidad":2,"precioUnitario":1.00,"descuento":0.00,"idPedido":1,"idProducto":3},
+  {"Cantidad":1,"precioUnitario":4.75,"descuento":0.00,"idPedido":2,"idProducto":2},
+  {"Cantidad":1,"precioUnitario":2.25,"descuento":0.00,"idPedido":2,"idProducto":5},
+  {"Cantidad":1,"precioUnitario":0.90,"descuento":0.00,"idPedido":3,"idProducto":4},
+  {"Cantidad":1,"precioUnitario":2.00,"descuento":0.00,"idPedido":3,"idProducto":6},
+  {"Cantidad":1,"precioUnitario":3.50,"descuento":0.00,"idPedido":3,"idProducto":1},
+  {"Cantidad":3,"precioUnitario":1.00,"descuento":0.30,"idPedido":4,"idProducto":3},
+  {"Cantidad":1,"precioUnitario":4.75,"descuento":0.00,"idPedido":4,"idProducto":2},
+  {"Cantidad":2,"precioUnitario":2.25,"descuento":0.00,"idPedido":5,"idProducto":5},
+  {"Cantidad":1,"precioUnitario":3.50,"descuento":0.00,"idPedido":5,"idProducto":1}
+]

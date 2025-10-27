@@ -1,0 +1,16 @@
+//===================================CREACION DE USUARIO Y ROL en la base de datos admin==========================================
+use admin;
+
+db.createUser(
+  {
+    user: "admin",
+    pwd: "admin",
+    roles: [{ role: "userAdminAnyDatabase", db: "admin"}, "readWriteAnyDatabase"]
+  }
+);
+
+db.createUser({
+    user: "soporte",
+    pwd: "qwerty",
+    roles: [{role: "readWrite", db:"ComidaRapida"}]
+});

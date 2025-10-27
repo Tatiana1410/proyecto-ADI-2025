@@ -1,0 +1,4 @@
+[
+  {"fechaLog": "2025-10-25 12:16:00","usuario": "sramirez", "tipoEvento": "INSERT", "tablaAfectada": "Pedidos", "registroAfectado": 1, "descripcion": "Pedido registrado"},
+  {"fechaLog": "2025-10-25 12:16:05", "usuario": "ecastro", "tipoEvento": "UPDATE", "tablaAfectada": "Pedidos", "registroAfectado": 1, "descripcion": "Pedido marcado como Entregado"}
+]

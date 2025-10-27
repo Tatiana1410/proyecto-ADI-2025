@@ -1,0 +1,353 @@
+//=====================================20 INSERCIONES EN 'comentarios'====================================
+
+db.comentarios.insertMany([
+    { idPedidoSQL: 1, idClienteSQL: 1, comentario: "La hamburguesa llegó fría...", calificacion: 3, fecha: new Date("2025-10-24T14:00:00Z") },
+    { idPedidoSQL: 2, idClienteSQL: 2, comentario: "Excelente servicio y la comida muy caliente.", calificacion: 5, fecha: new Date("2025-10-23T10:00:00Z") },
+    { idPedidoSQL: 3, idClienteSQL: 3, comentario: "El pedido se demoró 20 minutos más de lo estimado.", calificacion: 2, fecha: new Date("2025-10-23T11:30:00Z") },
+    { idPedidoSQL: 4, idClienteSQL: 4, comentario: "Todo perfecto. La pizza estaba deliciosa.", calificacion: 5, fecha: new Date("2025-10-23T13:45:00Z") },
+    { idPedidoSQL: 5, idClienteSQL: 5, comentario: "El envase de la bebida estaba roto.", calificacion: 1, fecha: new Date("2025-10-23T16:00:00Z") },
+    { idPedidoSQL: 6, idClienteSQL: 6, comentario: "Buena relación calidad-precio. Volveré a pedir.", calificacion: 4, fecha: new Date("2025-10-23T18:15:00Z") },
+    { idPedidoSQL: 7, idClienteSQL: 7, comentario: "Faltó una porción de papas fritas en mi orden.", calificacion: 2, fecha: new Date("2025-10-24T09:30:00Z") },
+    { idPedidoSQL: 8, idClienteSQL: 8, comentario: "El mejor postre que he probado en mucho tiempo.", calificacion: 5, fecha: new Date("2025-10-24T12:10:00Z") },
+    { idPedidoSQL: 9, idClienteSQL: 9, comentario: "Comida tibia y repartidor descortés.", calificacion: 1, fecha: new Date("2025-10-24T15:40:00Z") },
+    { idPedidoSQL: 10, idClienteSQL: 10, comentario: "Rápida entrega, pero el pan de la hamburguesa estaba un poco duro.", calificacion: 3, fecha: new Date("2025-10-24T19:05:00Z") },
+    { idPedidoSQL: 11, idClienteSQL: 11, comentario: "Todo correcto, sin quejas.", calificacion: 4, fecha: new Date("2025-10-25T10:45:00Z") },
+    { idPedidoSQL: 12, idClienteSQL: 12, comentario: "Muy buena porción, quedé satisfecho.", calificacion: 5, fecha: new Date("2025-10-25T13:20:00Z") },
+    { idPedidoSQL: 13, idClienteSQL: 13, comentario: "Demasiada sal en las patatas.", calificacion: 2, fecha: new Date("2025-10-25T16:55:00Z") },
+    { idPedidoSQL: 14, idClienteSQL: 14, comentario: "Llegó antes de lo esperado, genial.", calificacion: 5, fecha: new Date("2025-10-25T19:35:00Z") },
+    { idPedidoSQL: 15, idClienteSQL: 15, comentario: "Pedido incompleto. Falta el aderezo.", calificacion: 1, fecha: new Date("2025-10-26T11:00:00Z") },
+    { idPedidoSQL: 16, idClienteSQL: 16, comentario: "La experiencia en general fue aceptable.", calificacion: 3, fecha: new Date("2025-10-26T14:25:00Z") },
+    { idPedidoSQL: 17, idClienteSQL: 17, comentario: "La comida estaba fresca y bien presentada.", calificacion: 4, fecha: new Date("2025-10-26T17:50:00Z") },
+    { idPedidoSQL: 18, idClienteSQL: 18, comentario: "Pedí sin cebolla y traía cebolla.", calificacion: 2, fecha: new Date("2025-10-27T10:15:00Z") },
+    { idPedidoSQL: 19, idClienteSQL: 19, comentario: "Sabor inigualable, lo recomiendo totalmente.", calificacion: 5, fecha: new Date("2025-10-27T13:35:00Z") },
+    { idPedidoSQL: 20, idClienteSQL: 20, comentario: "La bebida se derramó en la bolsa.", calificacion: 1, fecha: new Date("2025-10-27T16:40:00Z") },
+    { idPedidoSQL: 21, idClienteSQL: 21, comentario: "Me gustó mucho la nueva salsa.", calificacion: 4, fecha: new Date("2025-10-27T19:10:00Z") }
+]);
+//======================================15 INSERCIONES EN 'tickets'========================================
+
+db.tickets.insertMany([
+    {
+        idClienteSQL: 1,
+        idPedidoSQL: 1,
+        asunto: "Error en el cobro del cupón de descuento.",
+        descripcion: "El cupón de descuento no se aplicó en el pedido, por favor, ajusten la factura.",
+        estado: "Abierto",
+        fechaCreacion: new Date("2025-10-24T15:15:00Z")
+    },
+    {
+        idClienteSQL: 2,
+        idPedidoSQL: 2,
+        asunto: "Entrega a dirección incorrecta.",
+        descripcion: "El repartidor entregó mi pedido en el edificio de al lado.",
+        estado: "Abierto",
+        fechaCreacion: new Date("2025-10-23T14:00:00Z")
+    },
+    {
+        idClienteSQL: 3,
+        idPedidoSQL: 3,
+        asunto: "Problema con la calidad de la carne.",
+        descripcion: "La carne de mi hamburguesa estaba poco cocida.",
+        estado: "Abierto",
+        fechaCreacion: new Date("2025-10-24T11:00:00Z")
+    },
+    {
+        idClienteSQL: 4,
+        idPedidoSQL: 4,
+        asunto: "El sistema no aceptó mi método de pago.",
+        descripcion: "Intenté pagar con tarjeta de crédito y dio error 3 veces.Tuve que usar otra.",
+        estado: "Abierto",
+        fechaCreacion: new Date("2025-10-25T16:30:00Z")
+    },
+    {
+        idClienteSQL: 5,
+        idPedidoSQL: 5,
+        asunto: "No recibí mi factura electrónica.",
+        descripcion: "Solicité mi factura con mis datos fiscales y aún no llega al correo.",
+        estado: "Abierto",
+        fechaCreacion: new Date("2025-10-26T09:15:00Z")
+    },
+    {
+        idClienteSQL: 6,
+        idPedidoSQL: 6,
+        asunto: "Error en el cálculo del impuesto.",
+        descripcion: "Creo que me cobraron un impuesto de más en el pedido.",
+        estado: "Abierto",
+        fechaCreacion: new Date("2025-10-27T13:45:00Z")
+    },
+    {
+        idClienteSQL: 7,
+        idPedidoSQL: 7,
+        asunto: "Ausencia de cubiertos solicitados.",
+        descripcion: "Pedí cubiertos y servilletas y no venían en el paquete.",
+        estado: "En Progreso",
+        fechaCreacion: new Date("2025-10-23T15:30:00Z"),
+        idempleadoAsignadoSQL: 10
+    },
+    {
+        idClienteSQL: 8,
+        idPedidoSQL: 8,
+        asunto: "Reembolso por producto agotado.",
+        descripcion: "Me avisaron que no había un producto, pero aún no veo el reembolso.",
+        estado: "En Progreso",
+        fechaCreacion: new Date("2025-10-24T18:20:00Z"),
+        idempleadoAsignadoSQL: 12
+    },
+    {
+        idClienteSQL: 9,
+        idPedidoSQL: 9,
+        asunto: "Problema con mi cuenta de fidelidad.",
+        descripcion: "Mis puntos no se actualizaron después de la última compra.",
+        estado: "En Progreso",
+        fechaCreacion: new Date("2025-10-25T10:05:00Z"),
+        idempleadoAsignadoSQL: 10
+    },
+    {
+        idClienteSQL: 10,
+        idPedidoSQL: 10,
+        asunto: "Solicitud de cambio de orden.",
+        descripcion: "Necesito cambiar el tipo de pan de mi sándwich, ya que no puedo comer el que elegí.",
+        estado: "En Progreso",
+        fechaCreacion: new Date("2025-10-26T14:50:00Z"),
+        idempleadoAsignadoSQL: 15
+    },
+    {
+        idClienteSQL: 11,
+        idPedidoSQL: 11,
+        asunto: "Reporte de error en la App móvil.",
+        descripcion: "La app se congela al intentar finalizar el pedido.",
+        estado: "En Progreso",
+        fechaCreacion: new Date("2025-10-27T10:30:00Z"),
+        idempleadoAsignadoSQL: 11
+    },
+    {
+        idClienteSQL: 12,
+        idPedidoSQL: 12,
+        asunto: "Cupón no aplicado.",
+        descripcion: "El cupón 'ENVIO50' no se aplicó al total del pedido.",
+        estado: "Cerrado",
+        fechaCreacion: new Date("2025-10-20T12:00:00Z"),
+       	fechaCierre: new Date("2025-10-20T18:00:00Z"),
+        idempleadoAsignadoSQL: 14
+    },
+    {
+        idClienteSQL: 13,
+        idPedidoSQL: 13,
+        asunto: "Alérgenos no indicados.",
+        descripcion: "El producto contenía nueces y no estaba señalado en la descripción.",
+        estado: "Cerrado",
+        fechaCreacion: new Date("2025-10-21T17:00:00Z"),
+        fechaCierre: new Date("2025-10-22T09:00:00Z"),
+   	idempleadoAsignadoSQL: 13
+    },
+    {
+        idClienteSQL: 14,
+        idPedidoSQL: 14,
+        asunto: "Retraso prolongado del repartidor.",
+        descripcion: "El repartidor tardó 1 hora y 40 minutos en llegar.",
+        estado: "Cerrado",
+        fechaCreacion: new Date("2025-10-22T20:00:00Z"),
+        fechaCierre: new Date("2025-10-23T12:00:00Z"),
+        idempleadoAsignadoSQL: 10
+    },
+    {
+        idClienteSQL: 15,
+        idPedidoSQL: 15,
+        asunto: "Error en el tamaño del producto.",
+        descripcion: "Pedí una bebida grande y me enviaron una mediana.",
+        estado: "Cerrado",
+        fechaCreacion: new Date("2025-10-23T11:00:00Z"),
+        fechaCierre: new Date("2025-10-23T14:30:00Z"),
+        idempleadoAsignadoSQL: 15
+    },
+ 
+    {
+        idClienteSQL: 16,
+        idPedidoSQL: 16,
+        asunto: "Duda sobre ingredientes.",
+        descripcion: "Quería saber si el pan es integral o no.",
+        estado: "Cerrado",
+        fechaCreacion: new Date("2025-10-24T08:00:00Z"),
+        fechaCierre: new Date("2025-10-24T09:00:00Z"),
+        idempleadoAsignadoSQL: 11
+    }
+]);
+//=====================================15 INSERCIONES EN 'encuestas'=======================================
+
+db.encuestas.insertMany([
+    {
+        idClienteSQL: 10,
+        fecha: new Date("2025-10-24T14:30:00Z"),
+        preguntas: [
+            {idPregunta: 1,respuesta: "Sí, la calidad de los ingredientes fue excelente." },
+            {idPregunta: 2,respuesta: "El tiempo de espera fue aceptable (25 minutos)." }
+        ],
+        recomendaria: true,
+   	comentarioAdicional: "Por favor, añadan más opciones vegetarianas al menú."
+    },
+    {
+        idClienteSQL: 11,
+        fecha: new Date("2025-10-23T09:00:00Z"),
+        preguntas: [
+            { idPregunta: 1, respuesta: "El sabor fue increíble y la presentación impecable." },
+            { idPregunta: 2, respuesta: "Muy rápido, llegó en 15 minutos." },
+     
+        { idPregunta: 3, respuesta: "Sí, la relación costo-calidad es insuperable." }
+        ],
+        recomendaria: true,
+        comentarioAdicional: "Mi primera experiencia fue excelente."
+    },
+    {
+        idClienteSQL: 12,
+        fecha: new Date("2025-10-23T12:00:00Z"),
+        preguntas: [
+            { idPregunta: 1, respuesta: "La temperatura de la comida era baja." },
+            { idPregunta: 2, respuesta: "Tardó 45 minutos." },
+            { idPregunta: 3, respuesta: "No, por la demora y la comida fría." }
+        ],
+        recomendaria: false,
+        comentarioAdicional: "Deben mejorar los tiempos de entrega."
+    },
+    {
+        idClienteSQL: 13,
+        fecha: new Date("2025-10-24T10:00:00Z"),
+        preguntas: [
+            { idPregunta: 1, respuesta: "Correcto, exactamente lo que esperaba." },
+            { idPregunta: 2, respuesta: "A tiempo, dentro del rango." },
+            { idPregunta: 3, respuesta: "Sí, sin dudarlo." }
+        ],
+        recomendaria: true,
+        comentarioAdicional: null
+    },
+    {
+        idClienteSQL: 14,
+        fecha: new Date("2025-10-24T15:00:00Z"),
+        preguntas: [
+            { idPregunta: 1, respuesta: "Muy salado, un poco decepcionante." },
+            { idPregunta: 2, respuesta: "Un poco lento, 35 minutos." },
+            { idPregunta: 3, respuesta: "Tal vez, si no hay otra opción." }
+        ],
+        recomendaria: false,
+        comentarioAdicional: "Menos sal en las frituras, por favor."
+    },
+    {
+        idClienteSQL: 15,
+        fecha: new Date("2025-10-25T08:30:00Z"),
+        preguntas: [
+            { idPregunta: 1, respuesta: "La presentación fue muy creativa." },
+            { idPregunta: 2, respuesta: "Entrega rapidísima, el mejor punto." },
+            { idPregunta: 3, respuesta: "Absolutamente sí, por la velocidad." }
+        ],
+        recomendaria: true,
+        comentarioAdicional: "El repartidor fue muy amable."
+    },
+    {
+        idClienteSQL: 16,
+        fecha: new Date("2025-10-25T13:40:00Z"),
+        preguntas: [
+            { idPregunta: 1, respuesta: "Faltó cocción a la proteína." },
+            { idPregunta: 2, respuesta: "El tiempo fue aceptable." },
+            { idPregunta: 3, respuesta: "No, la calidad de la comida no fue buena esta vez." }
+        ],
+        recomendaria: false,
+        comentarioAdicional: null
+    },
+    {
+        idClienteSQL: 17,
+        fecha: new Date("2025-10-26T11:20:00Z"),
+        preguntas: [
+            { idPregunta: 1, respuesta: "Ingredientes frescos y de calidad." },
+            { idPregunta: 2, respuesta: "Muy bien, el tiempo fue de 20 minutos." },
+            { idPregunta: 3, respuesta: "Sí, los ingredientes son su fuerte." }
+        ],
+        recomendaria: true,
+        comentarioAdicional: "Mantengan esa calidad."
+    },
+    {
+        idClienteSQL: 18,
+        fecha: new Date("2025-10-26T16:50:00Z"),
+        preguntas: [
+            { idPregunta: 1, respuesta: "Me gustó el sabor, pero la porción era pequeña." },
+            { idPregunta: 2, respuesta: "La entrega fue puntual." },
+            { idPregunta: 3, respuesta: "Sí, pero podrían mejorar las porciones." }
+        ],
+        recomendaria: true,
+        comentarioAdicional: "Considerar porciones más grandes en los combos."
+    },
+    {
+        idClienteSQL: 19,
+        fecha: new Date("2025-10-27T09:45:00Z"),
+        preguntas: [
+            { idPregunta: 1, respuesta: "El café estaba frío." },
+            { idPregunta: 2, respuesta: "Llegó muy tarde, casi una hora." },
+            { idPregunta: 3, respuesta: "No, el servicio fue malo." }
+        ],
+        recomendaria: false,
+        comentarioAdicional: "Revisar la temperatura de las bebidas calientes."
+    },
+    {
+        idClienteSQL: 20,
+        fecha: new Date("2025-10-27T14:15:00Z"),
+        preguntas: [
+            { idPregunta: 1, respuesta: "La ensalada estaba muy fresca." },
+            { idPregunta: 2, respuesta: "Aceptable, 30 minutos de espera." },
+            { idPregunta: 3, respuesta: "Sí, lo mejor de la zona." }
+        ],
+        recomendaria: true,
+        comentarioAdicional: null
+    },
+    {
+        idClienteSQL: 21,
+        fecha: new Date("2025-10-27T18:30:00Z"),
+        preguntas: [
+            { idPregunta: 1, respuesta: "Pedí extra queso y no venía." },
+            { idPregunta: 2, respuesta: "Rápido, pero el pedido estaba incompleto." },
+            { idPregunta: 3, respuesta: "No, me cobraron algo que no recibí." }
+        ],
+        recomendaria: false,
+        comentarioAdicional: "Más atención a los detalles del pedido."
+    },
+    {
+        idClienteSQL: 22,
+        fecha: new Date("2025-10-28T10:30:00Z"),
+        preguntas: [
+            { idPregunta: 1, respuesta: "Sabor excelente, me encantó el aderezo." },
+            { idPregunta: 2, respuesta: "Muy buena entrega, 20 minutos." },
+            { idPregunta: 3, respuesta: "Sí, lo he recomendado a varios amigos." }
+        ],
+        recomendaria: true,
+        comentarioAdicional: "El repartidor fue muy cortés."
+    },
+    {
+        idClienteSQL: 23,
+        fecha: new Date("2025-10-28T13:00:00Z"),
+        preguntas: [
+            { idPregunta: 1, respuesta: "Perfecta, la comida llegó caliente." },
+            { idPregunta: 2, respuesta: "Muy rápido, 18 minutos." },
+            { idPregunta: 3, respuesta: "Sí, por la temperatura de la comida." }
+        ],
+        recomendaria: true,
+        comentarioAdicional: "Gracias por la eficiencia."
+    },
+    {
+        idClienteSQL: 24,
+        fecha: new Date("2025-10-28T16:20:00Z"),
+        preguntas: [
+            { idPregunta: 1, respuesta: "Los ingredientes se veían viejos." },
+            { idPregunta: 2, respuesta: "Entrega lenta, más de una hora." },
+            { idPregunta: 3, respuesta: "Definitivamente no." }
+        ],
+        recomendaria: false,
+        comentarioAdicional: "Pésima experiencia hoy."
+    },
+    {
+        idClienteSQL: 25,
+        fecha: new Date("2025-10-28T19:00:00Z"),
+        preguntas: [
+            { idPregunta: 1, respuesta: "Un poco de error en mi orden, pero no me gustó la comida." },
+            { idPregunta: 2, respuesta: "El tiempo de espera fue razonable." },
+            { idPregunta: 3, respuesta: "No." }
+        ],
+        recomendaria: false,
+        comentarioAdicional: "Advertir sobre el nivel de picante en el menú."
+    }
+]);

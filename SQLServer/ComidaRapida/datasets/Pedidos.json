@@ -1,0 +1,13 @@
+[
+  {"codigoPedido":"P-20251025-001","fechaPedido":"2025-10-25","horaPedido":"12:15:00","totalPedido":9.00,"estado":"Entregado","observaciones":null,"idCliente":1,"idEmpleado":2,"idMetodoPago":1},
+  {"codigoPedido":"P-20251025-002","fechaPedido":"2025-10-25","horaPedido":"12:30:00","totalPedido":7.00,"estado":"Entregado","observaciones":"SIN SALSA","idCliente":2,"idEmpleado":2,"idMetodoPago":2},
+  {"codigoPedido":"P-20251025-003","fechaPedido":"2025-10-25","horaPedido":"13:05:00","totalPedido":6.40,"estado":"Entregado","observaciones":null,"idCliente":3,"idEmpleado":2,"idMetodoPago":1},
+  {"codigoPedido":"P-20251025-004","fechaPedido":"2025-10-25","horaPedido":"13:20:00","totalPedido":7.45,"estado":"Entregado","observaciones":"DESCUENTO REFRESCOS","idCliente":1,"idEmpleado":2,"idMetodoPago":1},
+  {"codigoPedido":"P-20251020-001","fechaPedido":"2025-10-20","horaPedido":"11:00:00","totalPedido":8.50,"estado":"Entregado","observaciones":null,"idCliente":4,"idEmpleado":5,"idMetodoPago":1},
+  {"codigoPedido":"P-20251020-002","fechaPedido":"2025-10-20","horaPedido":"11:15:00","totalPedido":6.75,"estado":"Entregado","observaciones":"SIN HIELO","idCliente":5,"idEmpleado":6,"idMetodoPago":2},
+  {"codigoPedido":"P-20251020-003","fechaPedido":"2025-10-20","horaPedido":"11:30:00","totalPedido":9.20,"estado":"Entregado","observaciones":null,"idCliente":6,"idEmpleado":7,"idMetodoPago":1},
+  {"codigoPedido":"P-20251020-004","fechaPedido":"2025-10-20","horaPedido":"11:45:00","totalPedido":7.80,"estado":"Entregado","observaciones":"EXTRA QUESO","idCliente":7,"idEmpleado":8,"idMetodoPago":3},
+  {"codigoPedido":"P-20251020-005","fechaPedido":"2025-10-20","horaPedido":"12:00:00","totalPedido":5.90,"estado":"Entregado","observaciones":null,"idCliente":8,"idEmpleado":9,"idMetodoPago":1},
+  {"codigoPedido":"P-20251021-001","fechaPedido":"2025-10-21","horaPedido":"12:10:00","totalPedido":10.00,"estado":"Entregado","observaciones":"SIN MAYONESA","idCliente":9,"idEmpleado":10,"idMetodoPago":2},
+  {"codigoPedido":"P-20251021-002","fechaPedido":"2025-10-21","horaPedido":"12:25:00","totalPedido":6.50,"estado":"Entregado","observaciones":null,"idCliente":10,"idEmpleado":11,"idMetodoPago":1}
+]

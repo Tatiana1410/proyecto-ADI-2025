@@ -1,0 +1,13 @@
+[
+  {"nombreUser":"lmartinez","emailUser":"luis.martinez@comida.com","claveUser":"clave123","estado":"Activo","idEmpleado":1,"idRol":1},
+  {"nombreUser":"sramirez","emailUser":"sofia.ramirez@comida.com","claveUser":"clave123","estado":"Activo","idEmpleado":2,"idRol":2},
+  {"nombreUser":"ecastro","emailUser":"erick.castro@comida.com","claveUser":"clave123","estado":"Activo","idEmpleado":3,"idRol":3},
+  {"nombreUser":"agomez","emailUser":"ana.gomez@comida.com","claveUser":"clave123","estado":"Activo","idEmpleado":4,"idRol":2},
+  {"nombreUser":"clopez","emailUser":"carlos.lopez@comida.com","claveUser":"clave123","estado":"Activo","idEmpleado":5,"idRol":3},
+  {"nombreUser":"mfernandez","emailUser":"maria.fernandez@comida.com","claveUser":"clave123","estado":"Activo","idEmpleado":6,"idRol":2},
+  {"nombreUser":"jramirez","emailUser":"jose.ramirez@comida.com","claveUser":"clave123","estado":"Activo","idEmpleado":7,"idRol":3},
+  {"nombreUser":"ltorres","emailUser":"lucia.torres@comida.com","claveUser":"clave123","estado":"Activo","idEmpleado":8,"idRol":2},
+  {"nombreUser":"pmartinez","emailUser":"pedro.martinez@comida.com","claveUser":"clave123","estado":"Activo","idEmpleado":9,"idRol":1},
+  {"nombreUser":"vcruz","emailUser":"valeria.cruz@comida.com","claveUser":"clave123","estado":"Activo","idEmpleado":10,"idRol":2},
+  {"nombreUser":"jmolina","emailUser":"jorge.molina@comida.com","claveUser":"clave123","estado":"Activo","idEmpleado":11,"idRol":3}
+]

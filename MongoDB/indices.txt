@@ -1,0 +1,8 @@
+/* ÍNDICE 1️ - INDEX EN tickets POR idempleadoAsignadoSQL
+   Justificacion: acelera las consultas que agrupan o buscan tickets por empleado asignado,
+   especialmente al generar reportes de desempeño o carga de trabajo */
+db.tickets.createIndex({ idempleadoAsignadoSQL: 1 }, { name: "idx_empleadoAsignado" });
+
+/* ÍNDICE 2️ - INDEX EN comentarios POR idClienteSQL Y calificacion
+   Justificacion: optimiza las búsquedas de comentarios por cliente y se ordena  la calificacion de manera descendente */
+db.comentarios.createIndex({ idClienteSQL: 1, calificacion: -1 }, { name: "idx_cliente_calificacion_desc" });
