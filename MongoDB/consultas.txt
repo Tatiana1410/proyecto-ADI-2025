@@ -1,102 +1,68 @@
 //CONSULTAS DE USO REAL
 
-// ===============================================Primera consulta===============================================
-//Calcular la calificación promedio y el volumen total de comentarios por cada día.
+//Obtener la calificación promedio y el total de comentarios por cliente
+
 db.comentarios.aggregate([
-  {
-    $group: {
-      //Extrae la parte de la fecha (solo el día, mes, año) del campo 'fecha'
-      _id: { $dateToString: { format: "%Y-%m-%d", date: "$fecha" } },
-      // Calcula el promedio de la calificación (calificacion)
-      calificacionPromedio: { $avg: "$calificacion" },
-      // Cuenta cuántos comentarios se realizaron ese día
-      totalComentarios: { $sum: 1 }
-    }
-  },
-  {
-    //Ordena los resultados por fecha de forma ascendente
-    $sort: { _id: 1 }
-  }
-]);
-
-//===============================================Segunda consulta===============================================
-//Informe de rendimiento o carga de trabajo por empleado
-db.tickets.aggregate([
-  {
-    //Filtrar solo los tickets que tienen un empleado asignado
-    $match: {
-      idempleadoAsignadoSQL: { $ne: null }
-    }
-  },
-  {
-    //Agrupar por el ID del empleado asignado
-    $group: {
-      _id: "$idempleadoAsignadoSQL",
-      // Contar el total de tickets asignados a este empleado
-      totalTicketsAsignados: { $sum: 1 },
-      // Contar los tickets en estado "Abierto"
-      ticketsAbiertos: {
-        $sum: { $cond: [ { $eq: ["$estado", "Abierto"] }, 1, 0 ] }
-      },
-      // Contar los tickets en estado "En Progreso"
-      ticketsEnProgreso: {
-        $sum: { $cond: [ { $eq: ["$estado", "En Progreso"] }, 1, 0 ] }
-      },
-      // Contar los tickets en estado "Cerrado"
-      ticketsCerrados: {
-        $sum: { $cond: [ { $eq: ["$estado", "Cerrado"] }, 1, 0 ] }
-      }
-    }
-  },
-  {
-    //Renombrar el campo _id a idEmpleadoSQL para mayor claridad
-    $project: {
-      _id: 0,
-      idEmpleadoSQL: "$_id",
-      totalTicketsAsignados: 1,
-      ticketsAbiertos: 1,
-      ticketsEnProgreso: 1,
-      ticketsCerrados: 1
-    }
-  },
-  {
-    //Ordenar por ID de empleado
-    $sort: { idEmpleadoSQL: 1 }
-  }
-]);
-
-//===============================================Tercer consulta===============================================
-//Calcula la Tasa de Recomendación Porcentual
-db.encuestas.aggregate([
-  {
-    $group: {
-      _id: null,
-      //Contar el total de encuestas
-      totalEncuestas: { $sum: 1 },
-      //Contar las encuestas donde 'recomendaria' es true
-      totalRecomendariaSi: {
-        $sum: {
-          $cond: [
-            { $eq: ["$recomendaria", true] },
-            1,
-            0
-          ]
+    {
+        $group: {
+            _id: "$idClienteSQL", //Agrupar por el idClienteSQL
+            calificacionPromedio: { $avg: "$calificacion" }, //Promedio de calificaciones
+            totalComentarios: { $sum: 1 } //Contar el numero de comentarios
         }
-      }
+    },
+    { $sort: { calificacionPromedio: -1 } } //Ordenar de mayor a menor
+]);
+
+
+//Contar tickets por estado y empleado asignado
+
+db.tickets.aggregate([
+    { $match: { idempleadoAsignadoSQL: { $exists: true, $ne: null } } }, //Filtrar solo los tickets que tienen un empleado asignado
+    {
+        //Agrupar por el ID del empleado asignado y el estado del ticket
+        $group: {
+            _id: {
+                idEmpleado: "$idempleadoAsignadoSQL",
+                estadoTicket: "$estado"
+            },
+            //Contar el número de tickets para ese grupo
+            conteoTickets: { $sum: 1 }
+        }
+    },
+    { $project: { _id: 0, idEmpleadoSQL: "$_id.idEmpleado", estado: "$_id.estadoTicket", cantidad: "$conteoTickets" } }, //Proyectar para mostrar los campos de forma más clara
+    { $sort: { idEmpleadoSQL: 1, cantidad: -1 } } //Ordenar por el ID del empleado para mejor lectura
+]);
+
+
+//Unir (Lookup) Comentarios con Encuestas para Analizar la Satisfacción General
+
+db.comentarios.aggregate([
+    { $match: { calificacion: { $lte: 2 } } }, //Filtrar comentarios con calificación baja
+    {
+        //Unir con la colección 'encuestas'
+        $lookup: {
+            from: "encuestas",
+            localField: "idClienteSQL", //Campo en 'comentarios'
+            foreignField: "idClienteSQL", //Campo coincidente en 'encuestas'
+            as: "encuestasCliente"
+        }
+    },
+    { $unwind: "$encuestasCliente" }, //Desestructurar la matriz de encuestas (si solo se espera calificación = 1)
+    { $match: { "encuestasCliente.recomendaria": false } }, //Filtrar solo las encuestas donde el cliente no recomendaría
+    {
+        //Proyectar para mostrar solo los campos relevantes de ambos documentos
+        $project: {
+            _id: 0,
+            idPedidoComentario: "$idPedidoSQL",
+            idCliente: "$idClienteSQL",
+            calificacionComentario: "$calificacion",
+            comentario: "$comentario",
+            fechaEncuesta: "$encuestasCliente.fecha",
+            recomiendaServicio: "$encuestasCliente.recomendaria"
+        }
+    },
+    {
+        // Ordenar por ID del cliente
+        $sort: { idCliente: 1 }
     }
-  },
-  {
-    $project: {
-      _id: 0,
-      totalEncuestas: 1,
-      totalRecomendariaSi: 1,
-      //Calcular el porcentaje de recomendación
-      tasaRecomendacionPorcentaje: {
-        $multiply: [
-          { $divide: ["$totalRecomendariaSi", "$totalEncuestas"] },
-          100
-        ]
-      }
-    }
-  }
 ]);
