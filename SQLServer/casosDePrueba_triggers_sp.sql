@@ -29,7 +29,7 @@ SELECT * FROM LogEventos WHERE tablaAfectada = 'Productos';
 
 
 --probar procedimiento de actualizar stock
-EXEC sp_actualizarstock @idProducto = 1, @nuevaCantidad = 50;
+EXEC sp_actualizarstock @idProducto = 1, @cantidadAgregar =10;
 SELECT * FROM Productos WHERE idProducto = 1;
 SELECT * FROM LogEventos WHERE tablaAfectada = 'Productos';
 GO

@@ -63,42 +63,65 @@ GO
 --PROCEDIMIENTO PARA ACTUALIZAR STOCK DE FORMA MANUAL
 CREATE PROCEDURE sp_actualizarstock
     @idproducto INT,
-    @nuevacantidad INT
+    @cantidadAgregar INT  
 AS
 BEGIN
     SET NOCOUNT ON;
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        DECLARE @stockActual INT;
+        DECLARE @nuevoStock INT;
 
-    -- VALIDAR QUE LA CANTIDAD NO SEA NEGATIVA
-    IF @nuevacantidad < 0
-    BEGIN
-        PRINT 'ERROR: el stock no puede ser un valor negativo.';
-        RETURN;
-    END
+        -- VALIDAR QUE LA CANTIDAD NO SEA NEGATIVA
+        IF @cantidadAgregar <= 0
+        BEGIN
+            RAISERROR('ERROR: la cantidad a agregar debe ser mayor que cero.', 16, 1);
+            ROLLBACK TRANSACTION;
+            RETURN;
+        END
 
-    -- VALIDAR QUE EL PRODUCTO EXISTA
-    IF NOT EXISTS (SELECT 1 FROM productos WHERE idProducto = @idproducto)
-    BEGIN
-        PRINT 'ERROR: el producto especificado no existe.';
-        RETURN;
-    END
+        -- VALIDAR QUE EL PRODUCTO EXISTA
+        IF NOT EXISTS (SELECT 1 FROM Productos WHERE idProducto = @idproducto)
+        BEGIN
+            RAISERROR('ERROR: el producto especificado no existe.', 16, 1);
+            ROLLBACK TRANSACTION;
+            RETURN;
+        END
 
-    -- ACTUALIZAR EL STOCK DEL PRODUCTO
-    UPDATE Productos
-    SET stock = @nuevacantidad
-    WHERE idProducto = @idproducto;
+        -- OBTENER EL STOCK ACTUAL
+        SELECT @stockActual = stock FROM Productos WHERE idProducto = @idproducto;
 
-    -- REGISTRAR EL CAMBIO EN LA TABLA logbd
-    INSERT INTO LogEventos (fechaLog, usuario, tipoEvento, tablaAfectada, registroAfectado, descripcion)
-    VALUES (
-        GETDATE(),
-        SUSER_SNAME(),
-        'UPDATE',
-        'Productos',
-        @idproducto,
-        CONCAT('Stock actualizado manualmente a ', @nuevacantidad, ' unidades.')
-    );
+        -- CALCULAR NUEVO STOCK
+        SET @nuevoStock = @stockActual + @cantidadAgregar;
 
-    PRINT 'STOCK ACTUALIZADO CORRECTAMENTE.';
+        -- ACTUALIZAR EL STOCK
+        UPDATE Productos
+        SET stock = @nuevoStock
+        WHERE idProducto = @idproducto;
+
+        -- REGISTRAR EL CAMBIO EN LA TABLA LOG
+        INSERT INTO LogEventos (fechaLog, usuario, tipoEvento, tablaAfectada, registroAfectado, descripcion)
+        VALUES (
+            GETDATE(),
+            SUSER_SNAME(),
+            'UPDATE',
+            'Productos',
+            @idproducto,
+            CONCAT('Se agregaron ', @cantidadAgregar, ' unidades al stock. Total actualizado: ', @nuevoStock, ' unidades.')
+        );
+
+        COMMIT TRANSACTION;
+        PRINT 'STOCK ACTUALIZADO CORRECTAMENTE.';
+
+    END TRY
+    BEGIN CATCH
+        -- SI OCURRE UN ERROR, HACER ROLLBACK Y MOSTRAR MENSAJE
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+
+        PRINT 'ERROR AL ACTUALIZAR STOCK.';
+        PRINT ERROR_MESSAGE();
+    END CATCH
 END;
 GO
 
@@ -143,11 +166,7 @@ GO
 
 
 
-
---PROCEDIMIENTO, ACTUALIZAR ESTADO DEL PEDIDO
-USE comidarapida;
-GO
-
+-- PROCEDIMIENTO: ACTUALIZAR ESTADO DEL PEDIDO 
 CREATE PROCEDURE sp_actualizarEstadoPedido
     @idPedido INT,
     @nuevoEstado VARCHAR(30)
@@ -156,33 +175,31 @@ BEGIN
     SET NOCOUNT ON;
 
     BEGIN TRY
+        BEGIN TRANSACTION;
+
         -- VALIDAR QUE EL PEDIDO EXISTA
         IF NOT EXISTS (SELECT 1 FROM Pedidos WHERE idPedido = @idPedido)
         BEGIN
-            PRINT 'ERROR: el pedido especificado no existe.';
+            RAISERROR('ERROR: el pedido especificado no existe.', 16, 1);
+            ROLLBACK TRANSACTION;
             RETURN;
         END
 
-        -- ACTUALIZAR EL ESTADO
+        -- ACTUALIZAR EL ESTADO DEL PEDIDO
         UPDATE Pedidos
         SET estado = @nuevoEstado
         WHERE idPedido = @idPedido;
 
-        -- REGISTRAR EL CAMBIO EN LA BITÁCORA
-        INSERT INTO LogEventos (fechaLog, usuario, tipoEvento, tablaAfectada, registroAfectado, descripcion)
-        VALUES (
-            GETDATE(),
-            SUSER_SNAME(),
-            'UPDATE',
-            'pedidos',
-            @idPedido,
-            CONCAT('El estado del pedido cambió a "', @nuevoEstado, '".')
-        );
-
+        COMMIT TRANSACTION;
         PRINT 'ESTADO DEL PEDIDO ACTUALIZADO CORRECTAMENTE.';
     END TRY
     BEGIN CATCH
-        PRINT 'ERROR AL ACTUALIZAR EL ESTADO: ' + ERROR_MESSAGE();
+
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+
+        PRINT 'ERROR AL ACTUALIZAR EL ESTADO DEL PEDIDO.';
+        PRINT ERROR_MESSAGE();
     END CATCH
 END;
 GO
