@@ -16,7 +16,6 @@ GO
 CREATE TABLE dbo.dimProductos(
 	producto INT PRIMARY KEY,
 	nombreProducto VARCHAR(100) NOT NULL,
-	precioUnitario DECIMAL(10,2),
 	nombreCategoria VARCHAR(100)
 );
 GO
